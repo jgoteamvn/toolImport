@@ -14,6 +14,7 @@ import { getCategoryId } from '@/components/new/categories';
 import { getDiagrams } from '@/components/new/diagram';
 import { format } from 'date-fns';
 import { formatDate } from '@/components/formatDate';
+import { handleCategory } from '@/components/new/handleCategory';
 
 function getTypeId(folderName){
     const type_id = folderName.slice(0,1)
@@ -93,14 +94,16 @@ export default async function handler(req, res) {
         const status_id = getStatusId(status)
 
         // lấy categories
-        const category_id = await getCategoryId(folderName)
+        const categorys = await getCategoryId(folderName)
+
+        const category_id = await handleCategory(categorys)
 
         // lấy diagrams
         const diagrams = await getDiagrams(folderName)
 
 
         // gọi api đẩy dữ liệu
-        let data = JSON.stringify({
+        let data = {
             "id": id,
             "title": title,
             "slug": slugForApi,
@@ -125,7 +128,7 @@ export default async function handler(req, res) {
             "categories": category_id,
             "description": description,
             "content": content
-        });
+        };
 
         let config = {
             method: 'post',
