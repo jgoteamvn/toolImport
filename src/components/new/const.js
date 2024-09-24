@@ -42,5 +42,5 @@ export const api_url = "https://api.luatphapvietnam.org/api"
 
 export const apiUrl = "https://api.luatphapvietnam.org/api/backend/documents"
 
-export const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwibmFtZSI6IkFETUlOMSIsImVtYWlsIjoidHVhbm5oMTA5MEBnbWFpbC5jb20iLCJkZXNjcmlwdGlvbiI6bnVsbCwiYXZhdGFyIjpudWxsLCJkZWxldGVkX2F0IjpudWxsLCJyb2xlX2lkIjowLCJzdGF0dXMiOjEsImlhdCI6MTcyNzA2NzA1NywiZXhwIjoxNzI3MTUzNDU3fQ.PVKW6Ofnn6zP-w71wI1UoY3NqGBm5totdtcrC9qW_eo"
+export const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwibmFtZSI6IkFETUlOMSIsImVtYWlsIjoidHVhbm5oMTA5MEBnbWFpbC5jb20iLCJkZXNjcmlwdGlvbiI6bnVsbCwiYXZhdGFyIjpudWxsLCJkZWxldGVkX2F0IjpudWxsLCJyb2xlX2lkIjowLCJzdGF0dXMiOjEsImlhdCI6MTcyNzE1MzI5MywiZXhwIjoxNzI3MjM5NjkzfQ.Frae-Q7G2Aoep8iLSIcIy4-yoWcD832EAyggRge5C2E"
 export const cdnUrl = 'https://cdn.luatphapvietnam.org/van-ban'
