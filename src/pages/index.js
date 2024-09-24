@@ -48,6 +48,7 @@ export default function Home() {
         <div style={{position: 'fixed', top: 10, right: 50}}>
           <button onClick={handleClick}>click</button>
           <button onClick={handleStart}>bắt đầu</button>
+          <div>dang xu ly {action} / {datas?.length}</div>
         </div>
       </div>
     </>

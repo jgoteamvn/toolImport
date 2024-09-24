@@ -39,7 +39,7 @@ export default function Step1(){
             <div><button onClick={handleWrite}>Ghi file Jgon</button></div>
             {loading}
             <div>
-                {data && JSON.stringify(data)}
+                {data?.map((item,key) => <p key={key}>{item.name}</p>)}
             </div>
         </>
     )
