@@ -142,7 +142,7 @@ export default async function handler(req, res) {
         };
 
         const request = await axios.request(config)
-        console.log("🚀 ~ handler ~ request:", request?.data)
+        // console.log("🚀 ~ handler ~ request:", request?.data)
         return res.status(200).json(data)
 
     } catch (error) {

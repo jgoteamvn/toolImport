@@ -17,20 +17,8 @@ export default function DebugPage(){
     const [content,setContent] = useState()
 
     const handleCLick = async () => {
-        // setLoading("đang chạy")
-        // try {
-        //     const request = await axios.post(`/api/getDoc`,{
-        //         folderName: "1_149983_263613",
-        //         id: 1
-        //     })
-        //     console.log("🚀 ~ handleCLick ~ request:", request?.data)
-        //     setLoading("Thành công")
-        //     setContent(request?.data?.content)
-        // } catch (error) {
-        //     setLoading("lỗi rồi")
-        // }
+       
 
-        console.log(formatDateInsu("Năm 2023"))
     }
 
     return(
