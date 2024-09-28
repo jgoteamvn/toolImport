@@ -1,8 +1,20 @@
+import Step2 from "@/components/v2/step2"
+import { Flex } from "@radix-ui/themes"
 import { useState } from "react"
+import Step1 from "@/components/v2/step1"
+import Step0 from "@/components/v2/step0"
+import Step3 from "@/components/v2/step3"
+import Step4 from "@/components/v2/step4"
+import Step5 from "@/components/v2/step5"
+import Step6 from "@/components/v2/step6"
 
 function LabelStep({step}){
     return(
         <div style={styles.titleStep}>
+            <div style={step === 0 ? styles.stepActive : styles.step}>
+                <p>Step 0:</p>
+                <p>Lấy token</p>
+            </div>
             <div style={step === 1 ? styles.stepActive : styles.step}>
                 <p>Step 1:</p>
                 <p>Chọn Folder data</p>
@@ -31,44 +43,27 @@ function LabelStep({step}){
     )
 }
 
-function Step1({folderName,setFolderName,setStep}){
-    return(
-        <div>
-            <p style={{marginBottom:10}}>Step1: Nhập tên folder data</p>
-            <input
-                name="folderName"
-                id="folderName"
-                value={folderName}
-                onChange={(e) => setFolderName(e.target.value)}
-                placeholder="Nhập tên foler"
-                style={{
-                    minWidth: 300
-                }}
-            />
-            <div style={styles.buttonAction}>
-                <buton onClick={() => setStep(2)}>Next Step</buton>
-            </div>
-        </div>
-    )
-}
-
-function Step2({folderName,setStep}){
-
-}
 
 export default function IndexPage(){
 
     const [folderName,setFolderName] = useState("")
-    const [step,setStep] = useState(1)
+    const [step,setStep] = useState(0)
 
     return(
         <div style={{padding: 30, width: 1000}}>
             <LabelStep step={step} />
-            <Step1 
+            {step === 0 && <Step0 setStep={setStep} />}
+            {step === 1 && <Step1
                 folderName={folderName} 
                 setFolderName={setFolderName}
                 setStep={setStep}
-            />
+            />}
+
+            {step === 2 && <Step2 folderName={folderName}  setStep={setStep} />}
+            {step === 3 && <Step3 folderName={folderName}  setStep={setStep} />}
+            {step === 4 && <Step4 folderName={folderName}  setStep={setStep} />}
+            {step === 5 && <Step5 setStep={setStep} />}
+            {step === 6 && <Step6 folderName={folderName} setStep={setStep} />}
         </div>
     )
 }
@@ -85,8 +80,13 @@ const styles = {
     step:{
         fontWeight: 400
     },
+    title:{
+        fontWeight: 700,
+        marginBottom:10,
+        fontSize: 20
+    },
     stepActive: {
-        fontWeight: 700, color: "yellow"
+        fontWeight: 700, color: "#afaf00"
     },
     buttonAction: {
         display: 'flex',
@@ -94,5 +94,8 @@ const styles = {
         alignItems: 'center',
         margin: '30px 0',
         minWidth: 500
+    },
+    btn:{
+        cursor: 'pointer'
     }
 }

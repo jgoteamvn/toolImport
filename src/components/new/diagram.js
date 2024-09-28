@@ -1,10 +1,9 @@
 import fs from 'fs.promises'
-import { rootDir } from './const';
 import * as cheerio from 'cheerio';
 import _ from 'lodash';
 import { changeBackLink } from './changeBackLink';
 
-export async function getDiagrams(item){    
+export async function getDiagrams(item,rootDir="data_new"){    
 
     const luocdoFile = await fs.readFile(`./${rootDir}/${item}/lượcđồ.html`)
     const $ = cheerio.load(luocdoFile)

@@ -1,9 +1,11 @@
 import fs from 'fs.promises'
-import { rootDir } from './const';
 import * as cheerio from 'cheerio';
 import _ from 'lodash';
 
-export async function getCategoryId(folderName){
+export async function getCategoryId(
+    folderName,
+    rootDir = "data_new"
+){
     const noidungFile = await fs.readFile(`./${rootDir}/${folderName}/thuộctính.html`)
     const $ = cheerio.load(noidungFile)
 

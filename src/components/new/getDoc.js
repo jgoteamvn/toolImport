@@ -1,7 +1,7 @@
 import fs from 'fs.promises'
 import * as cheerio from 'cheerio';
 import _ from 'lodash';
-import { cdnUrl, rootDir } from './const'
+import { cdnUrl } from './const'
 import { changeBackLink } from './changeBackLink';
 
 export async function checkFileExit(fileName){
@@ -36,7 +36,9 @@ async function getContentComment(folderName){
     }
 }
 
-async function getContentTooltip(folderName){
+async function getContentTooltip(
+    folderName
+){
     try {
         const folders = await fs.readdir(`${folderName}/tooltip`)
         let result = ""
@@ -53,7 +55,12 @@ async function getContentTooltip(folderName){
     }
 }
 
-export async function getDoc(jsonFile,folderName,slug){
+export async function getDoc(
+    jsonFile,
+    folderName,
+    slug,
+    rootDir = "data_new"
+){
     const checkpdf = await checkFileExit(`./${rootDir}/${folderName}/${slug}.pdf`)
     const checkDoc = await checkFileExit(`./${rootDir}/${folderName}/${slug}.doc`)
     
