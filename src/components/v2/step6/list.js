@@ -1,4 +1,4 @@
-import { Box, Flex, Table } from "@radix-ui/themes";
+import { Box, Flex, Progress, Table } from "@radix-ui/themes";
 import { useState } from "react";
 import { delayApi } from "../delay";
 import { useEffect } from "react";
@@ -55,11 +55,19 @@ function Item({item,index,folderName,action,setAction,stt,end,id,setLoadingData}
     )
 }
 
+function valueProgress(action,end){
+    if(action > end) return 100
+    return action / end * 1000
+}
+
 export default function ListFolder({datas,action,setAction,folderName,setLoadingData,end}){
     return(
         <Flex direction={"column"} gap={"3"} mt={"4"}>
             <Box>
                 Dang chay: {action} - Ket thuc {end} - tong so {datas.length}
+            </Box>
+            <Box maxWidth="1000px">
+                <Progress value={valueProgress(action,end)}/>
             </Box>
             <Table.Root>
                 <Table.Header>
