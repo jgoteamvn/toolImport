@@ -1,4 +1,4 @@
-import { Table } from "@radix-ui/themes";
+import { Box, Flex, Table } from "@radix-ui/themes";
 import { useState } from "react";
 import { delayApi } from "../delay";
 import { useEffect } from "react";
@@ -57,28 +57,33 @@ function Item({item,index,folderName,action,setAction,stt,end,id,setLoadingData}
 
 export default function ListFolder({datas,action,setAction,folderName,setLoadingData,end}){
     return(
-        <Table.Root>
-            <Table.Header>
-                <Table.Row>
-                    <Table.ColumnHeaderCell>STT</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>folder name</Table.ColumnHeaderCell>
-                    <Table.ColumnHeaderCell>Action</Table.ColumnHeaderCell>
-                </Table.Row>
-            </Table.Header>
-            <Table.Body>
-                {datas?.map((item,key) => <Item 
-                    item={item}
-                    key={key}
-                    index={key}
-                    action={action} 
-                    setAction={setAction}
-                    end={end}
-                    stt={key + 1} 
-                    folderName={folderName}
-                    id={key + 1}
-                    setLoadingData={setLoadingData}
-                />)}
-            </Table.Body>
-        </Table.Root>
+        <Flex direction={"column"} gap={"3"} mt={"4"}>
+            <Box>
+                Dang chay: {action} - Ket thuc {end} - tong so {datas.length}
+            </Box>
+            <Table.Root>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.ColumnHeaderCell>STT</Table.ColumnHeaderCell>
+                        <Table.ColumnHeaderCell>folder name</Table.ColumnHeaderCell>
+                        <Table.ColumnHeaderCell>Action</Table.ColumnHeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                    {datas?.map((item,key) => <Item 
+                        item={item}
+                        key={key}
+                        index={key}
+                        action={action} 
+                        setAction={setAction}
+                        end={end}
+                        stt={key + 1} 
+                        folderName={folderName}
+                        id={key + 1}
+                        setLoadingData={setLoadingData}
+                    />)}
+                </Table.Body>
+            </Table.Root>
+        </Flex>
     )
 }
