@@ -9,6 +9,8 @@ function Item({item,index,folderName,action,setAction,stt,end,id,setLoadingData}
     const [loading,setLoading] = useState("đang chờ")
 
     const handleAction = async () => {
+
+        console.log({action,end})
         if(action == 0) return
 
         if(action > end) {
@@ -53,7 +55,7 @@ function Item({item,index,folderName,action,setAction,stt,end,id,setLoadingData}
     )
 }
 
-export default function ListFolder({datas,action,setAction,folderName,setLoadingData}){
+export default function ListFolder({datas,action,setAction,folderName,setLoadingData,end}){
     return(
         <Table.Root>
             <Table.Header>
@@ -70,7 +72,7 @@ export default function ListFolder({datas,action,setAction,folderName,setLoading
                     index={key}
                     action={action} 
                     setAction={setAction}
-                    end={datas?.length}
+                    end={end}
                     stt={key + 1} 
                     folderName={folderName}
                     id={key + 1}

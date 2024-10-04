@@ -1,4 +1,4 @@
-import { Button, Flex, Heading } from "@radix-ui/themes";
+import { Box, Button, Flex, Heading, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import { useState } from "react";
 import ListFolder from "./step6/list";
@@ -14,6 +14,9 @@ export default function Step6({folderName,setStep}){
 
     const [loadingData,setLoadingData] = useState(false)
 
+    const [start,setStart] = useState(0)
+    const [end,setEnd] = useState(0)
+
     const handleAction = async () => {
         try {
             const request = await axios.post('/api/v2/getFolder', {folderName: folderName})
@@ -25,7 +28,7 @@ export default function Step6({folderName,setStep}){
     }
 
     const handleStart = () => {
-        setAction(1)
+        setAction(start)
         setLoadingData(true)
     }
 
@@ -34,17 +37,33 @@ export default function Step6({folderName,setStep}){
             <Flex direction="row" gap="2" justify={"between"} align={"center"}>
                 <Heading as="h5">Step6: Đẩy văn bản lên server</Heading>
                 <Flex direction={"row"} gap={"2"}>
-                    <Button
-                        size={"1"} 
-                        color="gray"
-                        onClick={handleAction}
-                        loading={loading}
-                    >
-                        Lấy danh sách văn bản
-                    </Button>
+                    <Box>
+                        <TextField.Root
+                            name="start"
+                            placeholder="Bat dau"
+                            onChange={e => setStart(+e.target.value)}
+                        />
+                    </Box>
+                    <Box>
+                        <TextField.Root
+                            name="end"
+                            placeholder="Ket thuc"
+                            onChange={e => setEnd(+e.target.value)}
+                        />
+                    </Box>
+                    {!enable &&
+                        <Button
+                            size={"2"} 
+                            color="gray"
+                            onClick={handleAction}
+                            loading={loading}
+                        >
+                            Lấy danh sách văn bản
+                        </Button>
+                    }
                     {enable && 
                         <Button 
-                            size={"1"} 
+                            size={"2"} 
                             onClick={handleStart}
                             disabled={loadingData}
                             loading={loadingData}
@@ -61,6 +80,7 @@ export default function Step6({folderName,setStep}){
                 setAction={setAction} 
                 folderName={folderName}
                 setLoadingData={setLoadingData}
+                end={end}
             />
 
             <Flex direction="row" gap="2" justify={"between"} align={"center"} mt={"8"}>
