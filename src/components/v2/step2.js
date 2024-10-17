@@ -57,7 +57,7 @@ export default function Step2({folderName,setStep}){
                 <Button onClick={() => setStep(1)}>Pre Step</Button>
                 <Button 
                     onClick={() => setStep(3)}
-                    disabled={checkDistableBtn(agencies,action)}
+                    // disabled={checkDistableBtn(agencies,action)}
                 >
                     Next Step
                 </Button>

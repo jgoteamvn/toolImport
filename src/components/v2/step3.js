@@ -41,7 +41,7 @@ export default function Step3({folderName,setStep}){
                         <Button 
                             size={"1"} 
                             onClick={()=>setAction(action + 1)}
-                            disabled={action === categories?.length + 1}
+                            // disabled={action === categories?.length + 1}
                         >
                             Đồng bộ
                         </Button>}

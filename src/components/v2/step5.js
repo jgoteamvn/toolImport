@@ -35,7 +35,8 @@ export default function Step5({setStep}){
             <Flex direction="row" gap="2" justify={"between"} align={"center"} mt={"8"}>
                 <Button onClick={() => setStep(4)}>Pre Step</Button>
                 <Button 
-                    disabled={true}
+                    // disabled={true}
+                    onClick={() => setStep(6)}
                 >
                     Next Step
                 </Button>

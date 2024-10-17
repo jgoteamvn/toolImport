@@ -58,7 +58,7 @@ export default function Step4({folderName,setStep}){
                 <Button onClick={() => setStep(3)}>Pre Step</Button>
                 <Button 
                     onClick={() => setStep(5)}
-                    disabled={checkDistableBtn(signPerson,action)}
+                    // disabled={checkDistableBtn(signPerson,action)}
                 >
                     Next Step
                 </Button>
