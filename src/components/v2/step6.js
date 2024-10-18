@@ -18,9 +18,18 @@ export default function Step6({folderName,setStep}){
     const [end,setEnd] = useState(0)
 
     const handleAction = async () => {
+        if(start == 0) return
+        if(end == 0) return
+        if(start > end) return
         try {
             const request = await axios.post('/api/v2/getFolder', {folderName: folderName})
-            setDatas(request.data)
+            let result = []
+            request.data.map((item,key) => {
+                if(start > key + 1) return
+                if(end < key + 1) return
+                result.push(item)
+            })
+            setDatas(result)
             setEnable(true)
           } catch (error) {
             console.log("🚀 ~ handleClick ~ error:", error?.response?.data)
@@ -51,16 +60,14 @@ export default function Step6({folderName,setStep}){
                             onChange={e => setEnd(+e.target.value)}
                         />
                     </Box>
-                    {!enable &&
-                        <Button
-                            size={"2"} 
-                            color="gray"
-                            onClick={handleAction}
-                            loading={loading}
-                        >
-                            Lấy danh sách văn bản
-                        </Button>
-                    }
+                    <Button
+                        size={"2"} 
+                        color="gray"
+                        onClick={handleAction}
+                        loading={loading}
+                    >
+                        Lấy danh sách văn bản
+                    </Button>
                     {enable && 
                         <Button 
                             size={"2"} 

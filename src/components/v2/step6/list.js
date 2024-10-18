@@ -10,11 +10,9 @@ function Item({item,index,folderName,action,setAction,stt,end,id,setLoadingData}
 
     const handleAction = async () => {
 
-        console.log({action,end})
         if(action == 0) return
 
         if(action > end) {
-            console.log("im in")
             setLoadingData(false)
             return
         }
@@ -64,11 +62,11 @@ export default function ListFolder({datas,action,setAction,folderName,setLoading
     return(
         <Flex direction={"column"} gap={"3"} mt={"4"}>
             <Box>
-                Dang chay: {action} - Ket thuc {end} - tong so {datas.length}
+                Dang chay: {action} - Ket thuc {end} - tong so {datas?.length}
             </Box>
-            <Box maxWidth="1000px">
+            {/* <Box maxWidth="1000px">
                 <Progress value={valueProgress(action,end)}/>
-            </Box>
+            </Box> */}
             <Table.Root>
                 <Table.Header>
                     <Table.Row>
