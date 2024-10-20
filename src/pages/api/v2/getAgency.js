@@ -54,7 +54,6 @@ export default async function handler(req, res) {
                     "name": agency,
                 })
             }
-            total = total + 1
         }
 
         result = _.uniqBy(result, 'name')
