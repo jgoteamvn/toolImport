@@ -14,7 +14,7 @@ function formatArray(datas){
 
 export default async function handler(req, res) {
 
-    const {folderName} = req.body
+    const {folderName,start,end} = req.body
 
     const cookies = new Cookies(req, res, {
         secure: process.env.NODE_ENV !== "development",
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
 
         let getCategories = []
 
-        for(let i =0;i< folders.length;i++){
+        for(let i = +start;i< +end + 1;i++){
 
             if(folders[i] == '.DS_Store') continue;
 

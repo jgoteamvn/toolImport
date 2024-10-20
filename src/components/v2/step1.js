@@ -1,6 +1,6 @@
 import { Button, Flex, Heading, TextField } from "@radix-ui/themes";
 
-export default function Step1({folderName,setFolderName,setStep}){
+export default function Step1({folderName,setFolderName,setStep,start,setStart,end,setEnd}){
     return(
         <Flex direction={"column"} gap={"10"}>
 
@@ -11,13 +11,31 @@ export default function Step1({folderName,setFolderName,setStep}){
                 </Flex>
             </Flex>
 
-            <TextField.Root
-                name="folderName"
-                id="folderName"
-                value={folderName}
-                onChange={(e) => setFolderName(e.target.value)}
-                placeholder="Nhập tên foler"
-            />
+            <Flex direction={"row"} gap={"2"}>
+                <TextField.Root
+                    name="folderName"
+                    id="folderName"
+                    value={folderName}
+                    onChange={(e) => setFolderName(e.target.value)}
+                    placeholder="Nhập tên foler"
+                />
+                <TextField.Root
+                    name="start"
+                    id="start"
+                    value={start}
+                    onChange={(e) => setStart(e.target.value)}
+                    placeholder="Bắt đầu"
+                    type="number"
+                />
+                <TextField.Root
+                    name="end"
+                    id="end"
+                    value={end}
+                    onChange={(e) => setEnd(e.target.value)}
+                    placeholder="Kết thúc"
+                    type="number"
+                />
+            </Flex>
 
             <Flex direction="row" gap="2" justify={"between"} align={"center"} mt={"8"}>
                 <Button onClick={() => setStep(0)}>Pre Step</Button>

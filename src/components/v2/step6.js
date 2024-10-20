@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import ListFolder from "./step6/list";
 
-export default function Step6({folderName,setStep}){
+export default function Step6({folderName,setStep,start,end}){
     const [loading,setLoading] = useState(false)
 
     const [datas,setDatas] = useState()
@@ -14,19 +14,13 @@ export default function Step6({folderName,setStep}){
 
     const [loadingData,setLoadingData] = useState(false)
 
-    const [start,setStart] = useState(0)
-    const [end,setEnd] = useState(0)
-
     const handleAction = async () => {
-        if(start == 0) return
-        if(end == 0) return
-        if(start > end) return
         try {
             const request = await axios.post('/api/v2/getFolder', {folderName: folderName})
             let result = []
             request.data.map((item,key) => {
-                if(start > key + 1) return
-                if(end < key + 1) return
+                if(+start > key + 1) return
+                if(+end < key + 1) return
                 result.push(item)
             })
             setDatas(result)
@@ -46,20 +40,6 @@ export default function Step6({folderName,setStep}){
             <Flex direction="row" gap="2" justify={"between"} align={"center"}>
                 <Heading as="h5">Step6: Đẩy văn bản lên server</Heading>
                 <Flex direction={"row"} gap={"2"}>
-                    <Box>
-                        <TextField.Root
-                            name="start"
-                            placeholder="Bat dau"
-                            onChange={e => setStart(+e.target.value)}
-                        />
-                    </Box>
-                    <Box>
-                        <TextField.Root
-                            name="end"
-                            placeholder="Ket thuc"
-                            onChange={e => setEnd(+e.target.value)}
-                        />
-                    </Box>
                     <Button
                         size={"2"} 
                         color="gray"

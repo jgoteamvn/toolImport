@@ -46,8 +46,10 @@ function LabelStep({step}){
 
 export default function IndexPage(){
 
-    const [folderName,setFolderName] = useState("")
+    const [folderName,setFolderName] = useState("data_new")
     const [step,setStep] = useState(0)
+    const [start,setStart] = useState(0)
+    const [end,setEnd] = useState(0)
 
     return(
         <div style={{padding: 30, width: 1000}}>
@@ -57,13 +59,37 @@ export default function IndexPage(){
                 folderName={folderName} 
                 setFolderName={setFolderName}
                 setStep={setStep}
+                setStart={setStart}
+                setEnd={setEnd}
+                start={start}
+                end={end}
             />}
 
-            {step === 2 && <Step2 folderName={folderName}  setStep={setStep} />}
-            {step === 3 && <Step3 folderName={folderName}  setStep={setStep} />}
-            {step === 4 && <Step4 folderName={folderName}  setStep={setStep} />}
+            {step === 2 && <Step2 
+                folderName={folderName}  
+                setStep={setStep} 
+                start={start}
+                end={end}
+            />}
+            {step === 3 && <Step3 
+                folderName={folderName}  
+                setStep={setStep} 
+                start={start}
+                end={end}
+            />}
+            {step === 4 && <Step4 
+                folderName={folderName}  
+                setStep={setStep}
+                start={start}
+                end={end} 
+            />}
             {step === 5 && <Step5 setStep={setStep} />}
-            {step === 6 && <Step6 folderName={folderName} setStep={setStep} />}
+            {step === 6 && <Step6 
+                folderName={folderName} 
+                setStep={setStep} 
+                start={start}
+                end={end}
+            />}
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 import ListCategory from "./step3/list";
 import { checkDistableBtn } from "./func";
 
-export default function Step3({folderName,setStep}){
+export default function Step3({folderName,setStep,start,end}){
 
     const [loading,setLoading] = useState(false)
     const [categories,setCategories] = useState()
@@ -14,7 +14,9 @@ export default function Step3({folderName,setStep}){
     const handleAction = async () => {
         setLoading(true)
         try {
-            const request = await axios.post(`/api/v2/getCategory`, {folderName: folderName})
+            const request = await axios.post(`/api/v2/getCategory`, {
+                folderName,start,end
+            })
             setCategories(request.data)
         } catch (error) {
             console.log("🚀 ~ handleAgency ~ error:", error)

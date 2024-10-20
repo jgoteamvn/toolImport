@@ -41,7 +41,8 @@ export default async function handler(req, res) {
 
         let result = []
 
-        for(let i =0;i< folders.length;i++){
+        for(let i = +start;i< +end + 1;i++){
+
 
             if(folders[i] == '.DS_Store') continue;
 
@@ -53,10 +54,10 @@ export default async function handler(req, res) {
                     "name": agency,
                 })
             }
+            total = total + 1
         }
 
         result = _.uniqBy(result, 'name')
-        console.log("🚀 ~ handler ~ result:", result)
 
         return res.status(200).json(result)
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import AgencyList from "./step2/list";
 import { checkDistableBtn } from "./func";
 
-export default function Step2({folderName,setStep}){
+export default function Step2({folderName,setStep,start,end}){
 
     const [loading1,setLoading1] = useState(false)
     const [agencies,setAgencies] = useState()
@@ -14,7 +14,10 @@ export default function Step2({folderName,setStep}){
     const handleAction = async (api) => {
         setLoading1(true)
         try {
-            const request = await axios.post(`/api/v2/getAgency`, {folderName: folderName})
+            const request = await axios.post(`/api/v2/getAgency`, {
+                folderName: folderName,
+                start,end
+            })
             setAgencies(request.data)
         } catch (error) {
             console.log("🚀 ~ handleAgency ~ error:", error)

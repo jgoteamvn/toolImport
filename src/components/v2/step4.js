@@ -5,7 +5,7 @@ import AgencyList from "./step2/list";
 import { checkDistableBtn } from "./func";
 import SignPersonList from "./step4/list";
 
-export default function Step4({folderName,setStep}){
+export default function Step4({folderName,setStep,start,end}){
 
     const [loading,setLoading] = useState(false)
     const [signPerson,setSignPerson] = useState()
@@ -15,7 +15,7 @@ export default function Step4({folderName,setStep}){
     const handleAction = async (api) => {
         setLoading(true)
         try {
-            const request = await axios.post(`/api/v2/getSignPerson`, {folderName: folderName})
+            const request = await axios.post(`/api/v2/getSignPerson`, {folderName,start,end})
             setSignPerson(request.data)
         } catch (error) {
             console.log("🚀 ~ getSignPerson ~ error:", error)
